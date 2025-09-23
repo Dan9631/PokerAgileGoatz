@@ -1,5 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
+import Img0   from './assets/Image0.png'
+import Img12  from './assets/Image1-2.png'
+import Img1   from './assets/Image1.png'
+import Img2   from './assets/Image2.png'
+import Img3   from './assets/Image3.png'
+import Img5   from './assets/Image5.png'
+import Img8   from './assets/Image8.png'
+import Img13  from './assets/Image13.png'
+import ImgInf from './assets/ImageInfinito.png'
+import ImgQ   from './assets/ImageQuestion.png'
+import ImgCafe from './assets/ImageCafe.png'
 import "./PokerJoseGPT.css";
 
 const PokerJoseGPT = () => {
@@ -11,20 +22,20 @@ const PokerJoseGPT = () => {
     "👋 ¡Bienvenido! Selecciona tu estimación para comenzar"
   );
 
-  const estimateValues = [
-    { value: "0", type: "fibonacci", image: "src/assets/Image0.png" },
-    { value: "½", type: "fibonacci", image: "src/assets/Image1-2.png" },
-    { value: "1", type: "fibonacci", image: "src/assets/Image1.png" },
-    { value: "2", type: "fibonacci", image: "src/assets/Image2.png" },
-    { value: "3", type: "fibonacci", image: "src/assets/Image3.png" },
-    { value: "5", type: "fibonacci", image: "src/assets/Image5.png" },
-    { value: "8", type: "fibonacci", image: "src/assets/Image8.png" },
-    { value: "13", type: "fibonacci", image: "src/assets/Image13.png" },
-    { value: "∞", type: "special", image: "src/assets/ImageInfinito.png" },
-    { value: "?", type: "question", image: "src/assets/ImageQuestion.png" },
-    { value: "☕", type: "special", image: "src/assets/ImageCafe.png" },
+const estimateValues = [
+  { value: "0",  type: "fibonacci", image: Img0 },
+  { value: "½",  type: "fibonacci", image: Img12 },
+  { value: "1",  type: "fibonacci", image: Img1 },
+  { value: "2",  type: "fibonacci", image: Img2 },
+  { value: "3",  type: "fibonacci", image: Img3 },
+  { value: "5",  type: "fibonacci", image: Img5 },
+  { value: "8",  type: "fibonacci", image: Img8 },
+  { value: "13", type: "fibonacci", image: Img13 },
+  { value: "∞",  type: "special",   image: ImgInf },
+  { value: "?",  type: "question",  image: ImgQ },
+  { value: "☕", type: "special",    image: ImgCafe },
+]
 
-  ];
 
   const selectValue = (value, type, image) => {
     setSelectedEstimate({ value, type, image });
