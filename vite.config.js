@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/PokerJoseGPT/',
+  base: '/PokerAgileGoatz/',
   build: { outDir: 'docs', emptyOutDir: true }
 })
