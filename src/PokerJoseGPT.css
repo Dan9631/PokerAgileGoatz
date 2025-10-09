@@ -167,6 +167,10 @@
 .main-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
+.main-card-fullscreen.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
 
 .card-front,
 .card-back {
@@ -346,6 +350,29 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.expand-btn {
+  background: #4caf50;
+
+  color: white;
+
+  border: none;
+
+  padding: 0.75rem 2rem;
+  margin: 1rem;
+
+  border-radius: 9999px;
+
+  font-size: 1.125rem;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 .reset-btn:hover {
   background: #dc2626;
 
@@ -394,6 +421,60 @@
   font-size: 0.875rem;
 }
 
+.fullscreen {
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.main-card-fullscreen {
+  width: 20vw;
+
+  height: 100vh;
+
+  margin: 0 auto;
+
+  cursor: pointer;
+
+  position: relative;
+
+  transition: transform 0.3s ease;
+}
+.main-card-fullscreen:hover {
+  transform: scale(1.05);
+}
+
+.estimate-image-fullscreen {
+  width: 20rem;
+
+  height: 20rem;
+
+  object-fit: cover;
+
+  border-radius: 0.75rem;
+
+  margin-bottom: 1rem;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 480px) {
   .poker-title {
     font-size: 1.875rem;
@@ -403,6 +484,12 @@
     width: 12.5rem;
 
     height: 17.5rem;
+  }
+
+  .main-card-fullscreen {
+    width: 65vw;
+
+    height: 45vh;
   }
 
   .jose-avatar {
@@ -439,3 +526,4 @@
     font-size: 0.875rem;
   }
 }
+

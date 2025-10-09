@@ -21,7 +21,8 @@ const PokerJoseGPT = () => {
   const [gameStatus, setGameStatus] = useState(
     "👋 ¡Bienvenido! Selecciona tu estimación para comenzar"
   );
-
+  
+  const [isFullscreen, setIsFullscreen] = useState(false);
 const estimateValues = [
   { value: "0",  type: "fibonacci", image: Img0 },
   { value: "½",  type: "fibonacci", image: Img12 },
@@ -73,6 +74,10 @@ const estimateValues = [
     );
   };
 
+  const entrarPantallaCompleta = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   return (
     <div className="poker-container">
       <div className="poker-content">
@@ -85,7 +90,7 @@ const estimateValues = [
         </div>
 
         {/* Value Selector */}
-        <div className="value-selector">
+        <div className={`value-selector`}>
           <h3 className="selector-title">Selecciona tu estimación:</h3>
           <div className="value-buttons">
             {estimateValues.map((estimate) => (
@@ -109,10 +114,13 @@ const estimateValues = [
           <p>{gameStatus}</p>
         </div>
 
+        {/* boton para maximizar */}
+
         {/* Main Card */}
-        <div className="card-container">
+        <div className={` ${isFullscreen ? "fullscreen" : "card-container"}`}>
+          <button className="expand-btn" onClick={entrarPantallaCompleta}>Fullscreen</button>
           <div
-            className={`main-card ${isCardFlipped ? "flipped" : ""}`}
+            className={`${isFullscreen ? "main-card-fullscreen" : "main-card"} ${isCardFlipped ? "flipped" : ""}`}
             onClick={flipCard}
           >
             <div className="card-inner">
@@ -132,7 +140,7 @@ const estimateValues = [
                     <img
                       src={selectedEstimate.image}
                       alt={`Estimación ${selectedEstimate.value}`}
-                      className="estimate-image"
+                      className={`estimate-image ${isFullscreen ? "estimate-image-fullscreen" : ""}`}
                     />
                   </div>
                 ) : (
