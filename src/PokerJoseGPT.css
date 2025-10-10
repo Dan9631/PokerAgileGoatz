@@ -1,21 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .poker-container {
+  position: relative;
+  overflow: hidden;
   min-height: 100vh;
-
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-  padding: 20px;
-
   display: flex;
-
-  flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
-
-  font-family: "Arial", sans-serif;
+  font-family: 'Press Start 2P', monospace;
+  z-index: 0;
+  background-color: #1e1e2f; /* color base oscuro para fallback */
 }
 
+/* 🎯 Espiral tipo ruleta - estática */
+.poker-container::before{
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 45deg,
+    #667eea 0deg,
+    #764ba2 30deg,
+    #667eea 60deg,
+    #764ba2 90deg,
+    #667eea 120deg,
+    #764ba2 150deg,
+    #667eea 180deg,
+    #764ba2 210deg,
+    #667eea 240deg,
+    #764ba2 270deg,
+    #667eea 300deg,
+    #764ba2 330deg,
+    #667eea 360deg
+  );
+  opacity: 0.25;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(10px);
+  animation: balatro-spiral 15s linear infinite;
+}
+
+@keyframes balatro-spiral {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .poker-content {
   max-width: 400px;
 
@@ -24,41 +60,34 @@
   text-align: center;
 }
 
+/* 🕹️ Header */
 .poker-header {
   margin-bottom: 2rem;
 }
 
 .poker-title {
-  font-size: 2.5rem;
-
-  font-weight: bold;
-
-  color: white;
-
-  margin-bottom: 0.5rem;
-
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  color: #f9ca24;
+  text-shadow: 2px 2px 0px #000;
+  margin-bottom: 0.75rem;
 }
 
 .poker-subtitle {
+  font-size: 1rem;
   color: #e0e6ff;
-
-  font-size: 1.125rem;
 }
 
+/* 🎯 Selector de valores */
+.selector-title {
+  color: #f9ca24;
+  font-size: 0.90rem;
+  margin-bottom: 0.75rem;
+}
 .value-selector {
   margin-bottom: 2rem;
 }
 
-.selector-title {
-  color: white;
 
-  font-size: 1.25rem;
-
-  font-weight: 600;
-
-  margin-bottom: 1rem;
-}
 
 .value-buttons {
   display: grid;
@@ -93,15 +122,15 @@
 }
 
 .value-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #f9ca24;
 
   transform: scale(1.05);
 }
 
 .value-btn.selected {
-  background: #4caf50;
+  background: #2196f3;
 
-  border-color: #4caf50;
+  border-color: #44267c;
 
   box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
 }
@@ -172,35 +201,25 @@
 }
 
 
+/* 🧱 Lado frontal */
 .card-front,
 .card-back {
   position: absolute;
-
   width: 100%;
-
   height: 100%;
-
-  border-radius: 1.25rem;
-
+  border-radius: 0;
   backface-visibility: hidden;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
-
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-
-  border: 4px solid white;
+  border: 4px solid #f9ca24;
 }
 
 .card-front {
-  background: linear-gradient(145deg, #667eea, #764ba2);
-
+  background: #6f42c1;
   color: white;
+  box-shadow: inset -6px -6px 0px #44267c;
 }
 
 .jose-avatar {
@@ -228,6 +247,14 @@
 .jose-avatar span {
   font-size: 3rem;
 }
+  
+.jose-avatar span img {
+  background-color: #2196f3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .jose-name {
   font-size: 1.875rem;
@@ -333,11 +360,11 @@
 
   color: white;
 
-  border: none;
+  border: 2px solid #f9ca24;
+  font-family: 'Press Start 2P', monospace;
 
   padding: 0.75rem 2rem;
 
-  border-radius: 9999px;
 
   font-size: 1.125rem;
 
@@ -351,17 +378,15 @@
 }
 
 .expand-btn {
-  background: #4caf50;
+  background: #2196f3;
 
   color: white;
 
-  border: none;
+  border: 2px solid #f9ca24;
 
   padding: 0.75rem 2rem;
   margin: 1rem;
-
-  border-radius: 9999px;
-
+  
   font-size: 1.125rem;
 
   font-weight: 500;
@@ -369,6 +394,7 @@
   cursor: pointer;
 
   transition: all 0.3s ease;
+   font-family: 'Press Start 2P', monospace;
 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -432,7 +458,7 @@
 
   height: 100%;
 
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.1);
 
   display: flex;
 
@@ -477,7 +503,7 @@
 
 @media (max-width: 480px) {
   .poker-title {
-    font-size: 1.875rem;
+    font-size: 1.7rem;
   }
 
   .main-card {
@@ -503,6 +529,7 @@
   .jose-avatar span {
     font-size: 2rem;
   }
+
 
   .jose-name {
     font-size: 1.5rem;

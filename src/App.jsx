@@ -11,6 +11,7 @@ import Img13  from './assets/Image13.png'
 import ImgInf from './assets/ImageInfinito.png'
 import ImgQ   from './assets/ImageQuestion.png'
 import ImgCafe from './assets/ImageCafe.png'
+import ImgJose from './assets/jose-avatar.png'
 import "./PokerJoseGPT.css";
 
 const PokerJoseGPT = () => {
@@ -83,7 +84,7 @@ const estimateValues = [
       <div className="poker-content">
         {/* Header */}
         <div className="poker-header">
-          <h1 className="poker-title">🃏 Poker José GPT</h1>
+          <h1 className="poker-title">{`🃏 Poker José  ${__APP_VERSION__}`}</h1>
           <p className="poker-subtitle">
             Selecciona tu estimación y voltea tu carta
           </p>
@@ -127,10 +128,10 @@ const estimateValues = [
               {/* Card Front */}
               <div className="card-front">
                 <div className="jose-avatar">
-                  <span>👨‍💻</span>
+                  <span><img src={ImgJose} alt="José" /></span>
                 </div>
-                <div className="jose-name">José</div>
-                <div className="gpt-text">GPT</div>
+                <div className="jose-name">Poker</div>
+                <div className="gpt-text">José</div>
               </div>
 
               {/* Card Back */}
@@ -177,21 +178,21 @@ const estimateValues = [
           <h3>🎯 Instrucciones de uso:</h3>
           <ol>
             <li>
-              <strong>1. Selecciona:</strong> tu estimación haciendo clic en uno
+              <strong>Selecciona:</strong> tu estimación haciendo clic en uno
               de los valores
             </li>
             <li>
-              <strong>2. Voltea:</strong> tu carta haciendo clic en ella cuando
+              <strong>Voltea:</strong> tu carta haciendo clic en ella cuando
               todos estén listos
             </li>
             <li>
-              <strong>3. Compara:</strong> estimaciones con tu equipo
+              <strong>Compara:</strong> estimaciones con tu equipo
             </li>
             <li>
-              <strong>4. Discute:</strong> las diferencias y llega a un consenso
+              <strong>Discute:</strong> las diferencias y llega a un consenso
             </li>
             <li>
-              <strong>5. Reinicia:</strong> para una nueva historia de usuario
+              <strong>Reinicia:</strong> para una nueva historia de usuario
             </li>
           </ol>
         </div>
