@@ -193,6 +193,7 @@
   transform-style: preserve-3d;
 }
 
+
 .main-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
@@ -392,9 +393,9 @@
   font-weight: 500;
 
   cursor: pointer;
-
+  z-index: 20;
   transition: all 0.3s ease;
-   font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P', monospace;
 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -458,7 +459,7 @@
 
   height: 100%;
 
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.5);
 
   display: flex;
 
@@ -468,6 +469,37 @@
   justify-content: center;
 
   z-index: 1000;
+}
+
+.fullscreen .main-card-fullscreen::before{
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 300%;
+  height: 200%;
+  background: conic-gradient(
+    from 45deg,
+    #667eea 0deg,
+    #764ba2 30deg,
+    #667eea 60deg,
+    #764ba2 90deg,
+    #667eea 120deg,
+    #764ba2 150deg,
+    #667eea 180deg,
+    #764ba2 210deg,
+    #667eea 240deg,
+    #764ba2 270deg,
+    #667eea 300deg,
+    #764ba2 330deg,
+    #667eea 360deg
+  );
+  opacity: 0.5;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(10px);
+  animation: balatro-spiral 15s linear infinite;
 }
 
 .main-card-fullscreen {
@@ -483,6 +515,8 @@
 
   transition: transform 0.3s ease;
 }
+
+
 .main-card-fullscreen:hover {
   transform: scale(1.05);
 }
