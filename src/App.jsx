@@ -1,49 +1,141 @@
 import { useState } from "react";
 
-import Img0   from './assets/Image0.png'
-import Img12  from './assets/Image1-2.png'
-import Img1   from './assets/Image1.png'
-import Img2   from './assets/Image2.png'
-import Img3   from './assets/Image3.png'
-import Img5   from './assets/Image5.png'
-import Img8   from './assets/Image8.png'
-import Img13  from './assets/Image13.png'
-import ImgInf from './assets/ImageInfinito.png'
-import ImgQ   from './assets/ImageQuestion.png'
-import ImgCafe from './assets/ImageCafe.png'
+// Importar avatares
 import ImgJose from './assets/jose-avatar.png'
+import ImgMynor from './assets/Mynor/Mynor-avatar.png'
+
+// Importar imágenes de José
+import JoseImg0   from './assets/Image0.png'
+import JoseImg12  from './assets/Image1-2.png'
+import JoseImg1   from './assets/Image1.png'
+import JoseImg2   from './assets/Image2.png'
+import JoseImg3   from './assets/Image3.png'
+import JoseImg5   from './assets/Image5.png'
+import JoseImg8   from './assets/Image8.png'
+import JoseImg13  from './assets/Image13.png'
+import JoseImgInf from './assets/ImageInfinito.png'
+import JoseImgQ   from './assets/ImageQuestion.png'
+import JoseImgCafe from './assets/ImageCafe.png'
+
+// Importar imágenes de Mynor
+import MynorImg0   from './assets/Mynor/Image0.png'
+import MynorImg12  from './assets/Mynor/Image1-2.png'
+import MynorImg1   from './assets/Mynor/Image1.png'
+import MynorImg2   from './assets/Mynor/Image2.png'
+import MynorImg3   from './assets/Mynor/Image3.png'
+import MynorImg5   from './assets/Mynor/Image5.png'
+import MynorImg8   from './assets/Mynor/Image8.png'
+import MynorImg13  from './assets/Mynor/Image13.png'
+import MynorImgInf from './assets/Mynor/ImageInfinito.png'
+import MynorImgQ   from './assets/Mynor/ImageQuestion.png'
+import MynorImgCafe from './assets/Mynor/ImageCafe.png'
+
 import "./PokerJoseGPT.css";
 
 const PokerJoseGPT = () => {
   const [selectedEstimate, setSelectedEstimate] = useState(null);
-
   const [isCardFlipped, setIsCardFlipped] = useState(false);
-
   const [gameStatus, setGameStatus] = useState(
     "👋 ¡Bienvenido! Selecciona tu estimación para comenzar"
   );
-  
   const [isFullscreen, setIsFullscreen] = useState(false);
-const estimateValues = [
-  { value: "0",  type: "fibonacci", image: Img0 },
-  { value: "½",  type: "fibonacci", image: Img12 },
-  { value: "1",  type: "fibonacci", image: Img1 },
-  { value: "2",  type: "fibonacci", image: Img2 },
-  { value: "3",  type: "fibonacci", image: Img3 },
-  { value: "5",  type: "fibonacci", image: Img5 },
-  { value: "8",  type: "fibonacci", image: Img8 },
-  { value: "13", type: "fibonacci", image: Img13 },
-  { value: "∞",  type: "special",   image: ImgInf },
-  { value: "?",  type: "question",  image: ImgQ },
-  { value: "☕", type: "special",    image: ImgCafe },
-]
+  const [selectedMaster, setSelectedMaster] = useState(null);
+  const [showMasterSelector, setShowMasterSelector] = useState(true);
+
+  // Lista de Scrum Masters disponibles con sus imágenes
+  const scrumMasters = [
+    {
+      id: 'jose',
+      name: 'José',
+      avatar: ImgJose,
+      color: '#4A90E2',
+      images: {
+        "0": JoseImg0,
+        "½": JoseImg12,
+        "1": JoseImg1,
+        "2": JoseImg2,
+        "3": JoseImg3,
+        "5": JoseImg5,
+        "8": JoseImg8,
+        "13": JoseImg13,
+        "∞": JoseImgInf,
+        "?": JoseImgQ,
+        "☕": JoseImgCafe,
+      }
+    },
+    {
+      id: 'mynor',
+      name: 'Mynor',
+      avatar: ImgMynor,
+      color: '#E94B3C',
+      images: {
+        "0": MynorImg0,
+        "½": MynorImg12,
+        "1": MynorImg1,
+        "2": MynorImg2,
+        "3": MynorImg3,
+        "5": MynorImg5,
+        "8": MynorImg8,
+        "13": MynorImg13,
+        "∞": MynorImgInf,
+        "?": MynorImgQ,
+        "☕": MynorImgCafe,
+      }
+    },
+  ];
+
+  // Generar valores de estimación según el master seleccionado
+  const getEstimateValues = () => {
+    if (!selectedMaster) {
+      return [
+        { value: "0",  type: "fibonacci", image: JoseImg0 },
+        { value: "½",  type: "fibonacci", image: JoseImg12 },
+        { value: "1",  type: "fibonacci", image: JoseImg1 },
+        { value: "2",  type: "fibonacci", image: JoseImg2 },
+        { value: "3",  type: "fibonacci", image: JoseImg3 },
+        { value: "5",  type: "fibonacci", image: JoseImg5 },
+        { value: "8",  type: "fibonacci", image: JoseImg8 },
+        { value: "13", type: "fibonacci", image: JoseImg13 },
+        { value: "∞",  type: "special",   image: JoseImgInf },
+        { value: "?",  type: "question",  image: JoseImgQ },
+        { value: "☕", type: "special",    image: JoseImgCafe },
+      ];
+    }
+
+    return [
+      { value: "0",  type: "fibonacci", image: selectedMaster.images["0"] },
+      { value: "½",  type: "fibonacci", image: selectedMaster.images["½"] },
+      { value: "1",  type: "fibonacci", image: selectedMaster.images["1"] },
+      { value: "2",  type: "fibonacci", image: selectedMaster.images["2"] },
+      { value: "3",  type: "fibonacci", image: selectedMaster.images["3"] },
+      { value: "5",  type: "fibonacci", image: selectedMaster.images["5"] },
+      { value: "8",  type: "fibonacci", image: selectedMaster.images["8"] },
+      { value: "13", type: "fibonacci", image: selectedMaster.images["13"] },
+      { value: "∞",  type: "special",   image: selectedMaster.images["∞"] },
+      { value: "?",  type: "question",  image: selectedMaster.images["?"] },
+      { value: "☕", type: "special",    image: selectedMaster.images["☕"] },
+    ];
+  };
+
+  const estimateValues = getEstimateValues();
+
+  const selectMaster = (master) => {
+    setSelectedMaster(master);
+    setShowMasterSelector(false);
+    setGameStatus(`👋 ¡Bienvenido ${master.name}! Selecciona tu estimación para comenzar`);
+  };
+
+  const changeMaster = () => {
+    setShowMasterSelector(true);
+    resetCard();
+  };
 
 
   const selectValue = (value, type, image) => {
     setSelectedEstimate({ value, type, image });
 
     setGameStatus(
-      `Estimación seleccionada: ${value} - Haz clic en la carta para revelar`
+      `Estimación seleccionada - Haz clic en la carta para revelar`
     );
   };
 
@@ -81,13 +173,43 @@ const estimateValues = [
 
   return (
     <div className="poker-container">
+      {/* Modal de selección de Scrum Master */}
+      {showMasterSelector && (
+        <div className="master-selector-overlay">
+          <div className="master-selector-modal">
+            <h2 className="master-selector-title">🎯 Selecciona tu Avatar</h2>
+            <p className="master-selector-subtitle">Elige quién serás en esta sesión de Planning Poker</p>
+            <div className="master-grid">
+              {scrumMasters.map((master) => (
+                <div
+                  key={master.id}
+                  className="master-card"
+                  onClick={() => selectMaster(master)}
+                  style={{ borderColor: master.color }}
+                >
+                  <div className="master-avatar">
+                    <img src={master.avatar} alt={master.name} />
+                  </div>
+                  <h3 className="master-name">{master.name}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="poker-content">
         {/* Header */}
         <div className="poker-header">
           <h1 className="poker-title">{`🃏 Poker José  ${__APP_VERSION__}`}</h1>
           <p className="poker-subtitle">
-            Selecciona tu estimación y voltea tu carta
+            {selectedMaster ? `Jugando como: ${selectedMaster.name}` : 'Selecciona tu estimación y voltea tu carta'}
           </p>
+          {selectedMaster && (
+            <button className="change-master-btn" onClick={changeMaster}>
+              🔄 Cambiar Avatar
+            </button>
+          )}
         </div>
 
         {/* Value Selector */}
@@ -128,10 +250,15 @@ const estimateValues = [
               {/* Card Front */}
               <div className="card-front">
                 <div className="jose-avatar">
-                  <span><img src={ImgJose} alt="José" /></span>
+                  <span>
+                    <img 
+                      src={selectedMaster?.avatar || ImgJose} 
+                      alt={selectedMaster?.name || 'Avatar'} 
+                    />
+                  </span>
                 </div>
                 <div className="jose-name">Poker</div>
-                <div className="gpt-text">José</div>
+                <div className="gpt-text">{selectedMaster?.name || 'José'}</div>
               </div>
 
               {/* Card Back */}
